@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Form</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style type="text/css">
+        .container{
+            width: 500px;
+    background: rgba(0,0,0,0.8);
+    margin: 12% auto;
+    padding: 50px 0;
+    color: #fff;
+    box-shadow: 0 0 20px 2px rgba(0,0,0,0.5);
+        }
+        h2{
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        form{
+            margin-left: 10%;
+            margin-right: 10%;
+        }
+        @media (max-width: 576px) {
+            form{
+                margin-left: 100px;
+                margin-right: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container col-7">
+        <h2>LOGIN FORM</h2>
+        <form name="myForm" action="http://localhost:5002" method="post" onsubmit="return validateForm()">
+            <div class="form-group">
+                <label for="fname">First name:</label>
+                <input type="text" class="form-control" id="fname" name="fname" required>
+            </div>
+            <div class="form-group">
+                <label for="lname">Last name:</label>
+                <input type="text" class="form-control" id="lname" name="lname" required pattern="[a-zA-Z]">
+            </div>
+            <div class="form-group">
+                <label for="email">Email Id:</label>
+                <input type="text" class="form-control" id="email" name="email" value="" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+            </div>
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" class="form-control" id="username" name="username" value="" required>
+            </div>
+            <div class="form-group">
+                <label for="pwd">Password:</label>
+                <input type="password" class="form-control" id="pwd" name="pwd" value="" required>
+            </div>
+            
+            <div class="form-group text-center">
+                <input type="submit" class="btn btn-primary" name="login" value="login">
+            </div>
+            <div class="form-group text-center">
+                <a href="update.html">Forget Password?</a>
+            </div>
+            <div class="form-group text-center">
+                <a href="delete.html">Delete existing account</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
+
+    
+   
+    <script>
+      function validateForm() {
+        var fname = document.forms["myForm"]["fname"].value;
+        var lname = document.forms["myForm"]["lname"].value;
+        var email = document.forms["myForm"]["email"].value;
+        var pwd = document.forms["myForm"]["pwd"].value;
+        var username = document.forms["myForm"]["username"].value;
+      
+        if (fname == "" || lname == "" || email == "" || pwd == "" || username == "") {
+          alert("All fields must be filled out");
+          return false;
+        }
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+          alert("Please enter a valid email address");
+          return false;
+        }
+        if (pwd.length < 6) {
+          alert("Password must be at least 6 characters long");
+          return false;
+        }
+        
+        return true;
+      }
+      </script>
+  
+    <style>
+      body {
+        background-image:url("https://t3.ftcdn.net/jpg/01/85/33/80/240_F_185338080_gbMNMTxTZ9x1dCPit2ZaoN63MAC9nbLJ.jpg");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+      }
+    </style>
+    
